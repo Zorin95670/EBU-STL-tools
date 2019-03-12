@@ -31,6 +31,18 @@ ebu_rename: ebu_rename.o ebu.o string_utils.o
 %.o: %.c
 	gcc $(VERSION_NUMBER) -std=c99 -c $^ -lm
 
+install: all
+	mkdir -p $(DESTDIR)/usr/bin
+	cp bin/* $(DESTDIR)/usr/bin
+
+uninstall:
+	rm -f $(DESTDIR)/usr/bin/ebu_30to25
+	rm -f $(DESTDIR)/usr/bin/ebu_trim
+	rm -f $(DESTDIR)/usr/bin/ebu_dump
+	rm -f $(DESTDIR)/usr/bin/ebu_shift
+	rm -f $(DESTDIR)/usr/bin/ebu_from_srt
+	rm -f $(DESTDIR)/usr/bin/ebu_rename
+
 clean:
 	rm -f *.o
 	rm -f bin/*
