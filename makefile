@@ -32,5 +32,5 @@ ebu_rename: ebu_rename.o ebu.o string_utils.o
 	gcc $(VERSION_NUMBER) -std=c99 -c $^ -lm
 
 clean:
-	rm *.o
-	rm bin/*
+	rm -f *.o
+	rm -f bin/*
