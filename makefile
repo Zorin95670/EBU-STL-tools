@@ -1,5 +1,6 @@
 VPATH=src:source
-VERSION_NUMBER := -D'VERSION_NUMBER="$(shell date +%Y-%m-%d\ %H:%M:%S)"'
+VERSION=1.0.0
+VERSION_NUMBER := -D'VERSION_NUMBER="$(VERSION)"'
 
 all: ebu_shift ebu_dump ebu_trim ebu_30to25 srt ebu_rename
 
