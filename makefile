@@ -1,6 +1,8 @@
+NAME=EBU-STL-Tools
 VPATH=src:source
 VERSION=1.0.0
 VERSION_NUMBER := -D'VERSION_NUMBER="$(VERSION)"'
+PACKAGE=$(NAME)-$(VERSION)
 
 all: ebu_shift ebu_dump ebu_trim ebu_30to25 ebu_from_srt ebu_rename
 
@@ -42,6 +44,15 @@ uninstall:
 	rm -f $(DESTDIR)/usr/bin/ebu_shift
 	rm -f $(DESTDIR)/usr/bin/ebu_from_srt
 	rm -f $(DESTDIR)/usr/bin/ebu_rename
+
+dist: clean
+	mkdir $(PACKAGE)
+	cp -rpf source $(PACKAGE)/
+	cp README.markdown $(PACKAGE)/
+	cp LICENSE $(PACKAGE)/
+	cp makefile $(PACKAGE)/
+	tar -pcJf $(PACKAGE).tar.xz $(PACKAGE)/
+	rm -rf $(PACKAGE)
 
 clean:
 	rm -f *.o
